@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnController : MonoBehaviour
+public class SpawnController : Singleton<SpawnController>
 {
     float timer;
     float spawnTimer = 2f;
@@ -10,6 +10,7 @@ public class SpawnController : MonoBehaviour
     int stage = 0;
     int maxSpawnCnt = 20;
     int spawnCnt;
+    public int targetIndex;
     [SerializeField] private Monster[] monster;
     [SerializeField] public Transform spawnPos;
     [SerializeField] Transform[] wayPoints;
@@ -25,13 +26,13 @@ public class SpawnController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > spawnTimer && spawnCnt < maxSpawnCnt)
         {
-            Monster mon = Instantiate(monster[stage]);
-            mon.NextPath(wayPoints);
-            mon.transform.SetParent(spawnPos);
+            Monster mon = Instantiate(monster[stage], spawnPos);
+            mon.MoveMonster(wayPoints, Monster.Instance.nextPosIndex);
             mon.name = "monster";
 
             timer = 0;
             spawnCnt++;
         }
     }
+
 }

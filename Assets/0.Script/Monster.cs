@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Monster : MonoBehaviour
+public class Monster : Singleton<Monster>
 {
-
-    int nextPosIndex = 0;
+    [SerializeField]  private Transform[] target;
+    public int nextPosIndex = 0;
     SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
@@ -17,12 +17,12 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //NextPath();
+        //MoveMonster();
     }
 
-    public void NextPath(Transform[] wayPoints)
+/*    public void NextPath(Transform[] wayPoints)
     {
-        /*transform.position = Vector2.MoveTowards(transform.position, wayPoints[nextPosIndex].transform.position,  5f * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, wayPoints[nextPosIndex].transform.position, 5f * Time.deltaTime);
 
         if (transform.position == wayPoints[nextPosIndex].transform.position)
             nextPosIndex++;
@@ -33,14 +33,26 @@ public class Monster : MonoBehaviour
             sr.flipX = true;
 
         if (nextPosIndex == wayPoints.Length)
-            nextPosIndex = 0;   */
-        Vector3[] wayPointsvec = new Vector3[wayPoints.Length];
+            nextPosIndex = 0;
+        *//*Vector3[] wayPointsvec = new Vector3[wayPoints.Length];
         for (int i = 0; i < wayPoints.Length; i++)
         {
             wayPointsvec.SetValue(wayPoints[i].position, i);
         }
         transform.DOPath(wayPointsvec, 10f)
-            .OnComplete(() => transform.DOPath(wayPointsvec, 10f));
+            .SetEase(Ease.Linear);*//*
+
+    }*/
+    public void MoveMonster(Transform[] target, int nextPosIndex)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, target[nextPosIndex].position, 5f * Time.deltaTime);
+        if (Vector3.Distance(transform.position, target[nextPosIndex].transform.position) < 0.1f)
+        {
+            nextPosIndex++;
+        }
+        if (nextPosIndex >= 4)
+            nextPosIndex = 0;
     }
+
 
 }

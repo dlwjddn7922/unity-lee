@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class Monster : Singleton<Monster>
 {
-    [SerializeField]  private Transform[] target;
     public int nextPosIndex = 0;
     SpriteRenderer sr;
+
+    Transform[] target;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,42 +18,28 @@ public class Monster : Singleton<Monster>
     // Update is called once per frame
     void Update()
     {
-        //MoveMonster();
+        if (target == null || target.Length == 0)
+            return;
+
+        Move();
+    }
+    public void MoveMonster(Transform[] target)
+    {
+        this.target = target;
     }
 
-/*    public void NextPath(Transform[] wayPoints)
-    {
-        transform.position = Vector2.MoveTowards(transform.position, wayPoints[nextPosIndex].transform.position, 5f * Time.deltaTime);
-
-        if (transform.position == wayPoints[nextPosIndex].transform.position)
-            nextPosIndex++;
-
-        if (nextPosIndex == 3)
-            sr.flipX = false;
-        else if (nextPosIndex == 1)
-            sr.flipX = true;
-
-        if (nextPosIndex == wayPoints.Length)
-            nextPosIndex = 0;
-        *//*Vector3[] wayPointsvec = new Vector3[wayPoints.Length];
-        for (int i = 0; i < wayPoints.Length; i++)
-        {
-            wayPointsvec.SetValue(wayPoints[i].position, i);
-        }
-        transform.DOPath(wayPointsvec, 10f)
-            .SetEase(Ease.Linear);*//*
-
-    }*/
-    public void MoveMonster(Transform[] target, int nextPosIndex)
+    void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, target[nextPosIndex].position, 5f * Time.deltaTime);
-        if (Vector3.Distance(transform.position, target[nextPosIndex].transform.position) < 0.1f)
+        if (Vector3.Distance(transform.position, target[nextPosIndex].transform.position) <= 0.1f)
         {
             nextPosIndex++;
         }
         if (nextPosIndex >= 4)
             nextPosIndex = 0;
+        if (nextPosIndex == 3)
+            sr.flipX = false;
+        else if (nextPosIndex == 1)
+            sr.flipX = true;
     }
-
-
 }

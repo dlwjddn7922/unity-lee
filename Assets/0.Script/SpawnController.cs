@@ -27,7 +27,7 @@ public class SpawnController : Singleton<SpawnController>
         if (timer > spawnTimer && spawnCnt < maxSpawnCnt)
         {
             Monster mon = Instantiate(monster[stage], spawnPos);
-            mon.MoveMonster(wayPoints, Monster.Instance.nextPosIndex);
+            mon.MoveMonster(wayPoints);
             mon.name = "monster";
 
             timer = 0;

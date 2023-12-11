@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+/*    void Update()
     {
         if (Input.GetMouseButtonDown(1))
             CalTargetPos();
@@ -30,5 +30,5 @@ public class Player : MonoBehaviour
     void MoveTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-    }
+    }*/
 }

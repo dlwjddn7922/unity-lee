@@ -20,7 +20,7 @@ public class MouseDrag : MonoBehaviour
         mouseActive = true;
     }
 
-    void Update()
+/*    void Update()
     {
         if (mouseActive == true)
         {
@@ -40,7 +40,7 @@ public class MouseDrag : MonoBehaviour
                 square.transform.localScale = new Vector3(deltaX, deltaY, 0);
             }
 
-            /* if (Input.GetMouseButtonUp(0)) // 드래그가 끝나면 영역 사각형 삭제
+            *//* if (Input.GetMouseButtonUp(0)) // 드래그가 끝나면 영역 사각형 삭제
              {
                  Destroy(square);
              }
@@ -48,7 +48,7 @@ public class MouseDrag : MonoBehaviour
          else
          {
              Destroy(square);
-         }*/
+         }*//*
         }
-    }
+    }*/
 }

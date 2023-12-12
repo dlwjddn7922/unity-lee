@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1498062806174327413}
   - component: {fileID: -1235009518128470457}
-  - component: {fileID: 1498062806174327412}
   - component: {fileID: 1498062806174327418}
   - component: {fileID: 1498062806174327416}
   - component: {fileID: 3094843113410720310}
@@ -52,18 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitMarker: {fileID: 6618229429580238150}
   nav: {fileID: 3094843113410720310}
---- !u!114 &1498062806174327412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498062806174327417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f23c706b7974444395f0cd40eebea94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1498062806174327418
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -126,7 +113,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -142,10 +129,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2.5
+  m_Acceleration: 30
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1

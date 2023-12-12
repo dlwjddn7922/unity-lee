@@ -40,6 +40,26 @@ public class RTSPlayerController : MonoBehaviour
         }
     }
     /// <summary>
+    /// 마우스 드래그로 유닛을 선택할 때 호출
+    /// </summary>
+    public void DragSelectPlayer(PlayerController newPlayer)
+    {
+        if (!selectedPlayerList.Contains(newPlayer))
+        {
+            SelectPlayer(newPlayer);
+        }
+    }
+    /// <summary>
+    /// 선택된 모든 유닛을 이동할 때 호출
+    /// </summary>
+    public void MoveSelectedPlayer(Vector3 end)
+    {
+        for (int i = 0; i < selectedPlayerList.Count; i++)
+        {
+            selectedPlayerList[i].MoveTo(end);
+        }
+    }
+    /// <summary>
     /// 모든 유닛의 선택을 해제할 때 호출
     /// </summary>
     public void DeselectAll()

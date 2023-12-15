@@ -7,6 +7,7 @@ public class PlayerSpawn : Singleton<PlayerSpawn>
     [SerializeField] private GameObject[] unitPrefab;
     [SerializeField] private GameObject spanwerPrefab;
     [SerializeField] private int maxUnitCount;
+    [SerializeField] private Transform parent;
 
     private Vector2 minsize = new Vector2(0, 0);
     private Vector2 maxsize = new Vector2(0, 0);
@@ -39,6 +40,7 @@ public class PlayerSpawn : Singleton<PlayerSpawn>
         Vector3 position = new Vector3(Random.Range(-1,-3),Random.Range(1,3),0);
 
         GameObject clone = Instantiate(unitPrefab[(int)PlayerRank.nomal], position, Quaternion.identity);
+        clone.transform.SetParent(parent);
         PlayerController player = clone.GetComponent<PlayerController>();
 
         unitList.Add(player);

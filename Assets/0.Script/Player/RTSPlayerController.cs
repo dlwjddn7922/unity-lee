@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RTSPlayerController : MonoBehaviour
+public class RTSPlayerController : Singleton<RTSPlayerController>
 {
     [SerializeField] private PlayerSpawn playerSpawn;
     [SerializeField] private List<PlayerController> selectedPlayerList;
-    [SerializeField] public List<PlayerController> playerList { private set; get; }
+    [SerializeField] public List<PlayerController> playerList = new List<PlayerController>();
+    [SerializeField] public List<PlayerController> spawnerList { private set; get; }
     // Start is called before the first frame update
     void Start()
     {
         selectedPlayerList = new List<PlayerController>();
-        playerList = playerSpawn.SpawnPlayer();
+        spawnerList = playerSpawn.Spawner();
+    }
+    void Update()
+    {
+        
     }
     /// <summary>
     /// 마우스 클릭으로 유닛을 선택할 때 호출
@@ -90,5 +95,14 @@ public class RTSPlayerController : MonoBehaviour
         newPlayer.DeselectUnit();
         // 선택한 플레이어 정보를 리스트에서 삭제
         selectedPlayerList.Remove(newPlayer);
+    }
+    public void SpawnPlayer()
+    {
+        List<PlayerController> plist = playerSpawn.SpawnPlayer();
+        foreach (var item in plist)
+        {
+            playerList.Add(item);
+        }
+        
     }
 }

@@ -12,6 +12,7 @@ public class MouseDrag : MonoBehaviour
 
     private Camera mainCamera;
     private RTSPlayerController rTSPlayerController;
+    private PlayerSpawnController playerSpawnController;
 
     // Start is called before the first frame update
     void Start()
@@ -84,12 +85,23 @@ public class MouseDrag : MonoBehaviour
     void SelectPlayer()
     {
         //모든 플레이어를 검사
-        foreach (PlayerController player in rTSPlayerController.playerList)
+        if(rTSPlayerController.playerList != null)
+        {
+            foreach (PlayerController player in rTSPlayerController.playerList)
+            {
+                //플레이어의 월드 좌표를 화면 좌표로 변환해 드래그 범위 내에 있는지 검사
+                if (dragRect.Contains(mainCamera.WorldToScreenPoint(player.transform.position)))
+                {
+                    rTSPlayerController.DragSelectPlayer(player);
+                }
+            }
+        }     
+        foreach (PlayerController player in rTSPlayerController.spawnerList)
         {
             //플레이어의 월드 좌표를 화면 좌표로 변환해 드래그 범위 내에 있는지 검사
             if (dragRect.Contains(mainCamera.WorldToScreenPoint(player.transform.position)))
             {
-                rTSPlayerController.DragSelectPlayer(player);              
+                rTSPlayerController.DragSelectPlayer(player);
             }
         }
     }

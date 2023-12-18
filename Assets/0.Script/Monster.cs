@@ -42,4 +42,11 @@ public class Monster : Singleton<Monster>
         else if (nextPosIndex == 1)
             sr.flipX = true;
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

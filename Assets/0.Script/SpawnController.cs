@@ -5,10 +5,10 @@ using UnityEngine;
 public class SpawnController : Singleton<SpawnController>
 {
     float timer;
-    float spawnTimer = 2f;
+    float spawnTimer = 0.5f;
     float spawnCount = 0;
     int stage = 0;
-    int maxSpawnCnt = 20;
+    int maxSpawnCnt = 30;
     int spawnCnt;
     public int targetIndex;
     [SerializeField] private Monster[] monster;

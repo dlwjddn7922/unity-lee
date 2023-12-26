@@ -7,11 +7,14 @@ public class Monster : Singleton<Monster>
 {
     public int nextPosIndex = 0;
     SpriteRenderer sr;
+    int hp;
+    float speed = 1.5f;
 
     Transform[] target;
     // Start is called before the first frame update
     void Start()
     {
+        hp = 30;
         sr = GetComponent<SpriteRenderer>();
         //transform.position = wayPoints[nextPosIndex].transform.position;
     }
@@ -30,7 +33,7 @@ public class Monster : Singleton<Monster>
 
     void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target[nextPosIndex].position, 5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target[nextPosIndex].position, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, target[nextPosIndex].transform.position) <= 0.1f)
         {
             nextPosIndex++;
@@ -45,6 +48,14 @@ public class Monster : Singleton<Monster>
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Hit();
+        }
+    }
+    public void Hit()
+    {
+        hp -= Player.Instance.power;
+        if(hp <= 0)
         {
             Destroy(gameObject);
         }

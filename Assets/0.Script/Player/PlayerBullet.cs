@@ -12,7 +12,7 @@ public class PlayerBullet : MonoBehaviour
     void Start()
     {
         power = 2;
-        speed = 25;
+        speed = 10;
     }
     // Update is called once per frame
     void Update()
@@ -35,7 +35,6 @@ public class PlayerBullet : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            //collision.GetComponent<Monster>().Hit(Power);
         }
     }
 }

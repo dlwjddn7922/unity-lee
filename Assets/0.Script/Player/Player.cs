@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
-    public float scanRange;
     public LayerMask targetLayer;
     //public RaycastHit2D[] targets;
     //public Transform nearestTarget;
     [SerializeField] private Transform fireTrans;
     [SerializeField] private PlayerBullet bullet;
     private float fireTimer = float.MaxValue;
-    private float fireDelayTime = 0.2f;
+    private float fireDelayTime;
+    public float speed;
+    public int power;
+    private float scanRange;
+    protected JsonData.PlayerMainData data;
 
+    public virtual void Init(int index)
+    {
+        data = JsonData.Instance.playerData.player[index];
+        scanRange = data.attdistance;
+        fireDelayTime = data.attdelay;
+        power = data.power;
+        speed = data.speed;
+
+    }
     private void OnDrawGizmos()
     {
         //Gizmos.color = Color.red;
@@ -22,7 +35,6 @@ public class Player : MonoBehaviour
     {
         FireBullet();
     }
-
     public void FireBullet()
     {
         Collider2D[] findMonsters = Physics2D.OverlapCircleAll(transform.position, scanRange, targetLayer);
@@ -52,13 +64,6 @@ public class Player : MonoBehaviour
             PlayerBullet b = Instantiate(bullet, fireTrans);
             b.SetTarget(target.transform);
             //b.transform.localPosition = Vector3.zero;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
         }
     }
 }

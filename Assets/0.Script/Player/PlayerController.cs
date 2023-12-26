@@ -13,6 +13,7 @@ public class PlayerController : Singleton<PlayerController>
         nav = GetComponent<NavMeshAgent>();
         nav.updateRotation = false;
         nav.updateUpAxis = false;
+        //nav.speed = Player.Instance.speed;
     }
 
     // Update is called once per frame

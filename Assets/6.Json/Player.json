@@ -1,0 +1,69 @@
+{
+  "player": [
+    {
+      "name": "normal",
+      "attdistance": 3.0,
+      "attdelay": 1.5,
+      "power": 10,
+      "speed": 2.5
+    },
+    {
+      "name": "rare",
+      "attdistance": 3.0,
+      "attdelay": 1.5,
+      "power": 15,
+      "speed": 2.5
+
+    },
+    {
+      "name": "ancient",
+      "attdistance": 3.0,
+      "attdelay": 1.2,
+      "power": 20,
+      "speed": 2.5
+
+    },
+    {
+      "name": "relic",
+      "attdistance": 3.5,
+      "attdelay": 1.0,
+      "power": 30,
+      "speed": 3.0
+    },
+    {
+      "name": "transcription",
+      "attdistance": 3.5,
+      "attdelay": 0.9,
+      "power": 35,
+      "speed": 3.0
+    },
+    {
+      "name": "legend",
+      "attdistance": 8.0,
+      "attdelay": 0.5,
+      "power": 40,
+      "speed": 4.0
+    },
+    {
+      "name": "epic",
+      "attdistance": 8.0,
+      "attdelay": 0.7,
+      "power": 35,
+      "speed": 4.0
+    },
+    {
+      "name": "myth",
+      "attdistance": 10.0,
+      "attdelay": 0.3,
+      "power": 50,
+      "speed": 5.0
+    },
+    {
+      "name": "god",
+      "attdistance": 15.0,
+      "attdelay": 0.15,
+      "power": 60,
+      "speed": 5.0
+    }
+  ]
+}

@@ -25,6 +25,7 @@ public class Player : Singleton<Player>
         power = data.power;
         speed = data.speed;
 
+
     }
     private void OnDrawGizmos()
     {

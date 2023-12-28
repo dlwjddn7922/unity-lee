@@ -19,7 +19,7 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
-
+        ControlUnit();
     }
     public void SelectUnit()
     {
@@ -32,5 +32,12 @@ public class PlayerController : Singleton<PlayerController>
     public void MoveTo(Vector3 end)
     {
         nav.SetDestination(end);
+    }
+    public void ControlUnit()
+    {
+        if (Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.S))
+        {
+            nav.ResetPath();
+        }
     }
 }

@@ -16,6 +16,8 @@ public class Player : Singleton<Player>
     public int power;
     private float scanRange;
     protected JsonData.PlayerMainData data;
+    bool isHold = false;
+    public bool isMove = false;
 
     public virtual void Init(int index)
     {
@@ -34,7 +36,12 @@ public class Player : Singleton<Player>
     }
     void Update()
     {
-        FireBullet();
+        PlayerControl();
+
+        if (isHold == true)
+            FireBullet();
+        else
+            return;
     }
     public void FireBullet()
     {
@@ -65,6 +72,17 @@ public class Player : Singleton<Player>
             PlayerBullet b = Instantiate(bullet, fireTrans);
             b.SetTarget(target.transform);
             //b.transform.localPosition = Vector3.zero;
+        }
+    }
+    public void PlayerControl()
+    {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            this.isHold = true;
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            this.isHold = false;
         }
     }
 }

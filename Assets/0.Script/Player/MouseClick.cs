@@ -52,7 +52,7 @@ public class MouseClick : MonoBehaviour
                 }
             }
         }
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.M))
         {
             //RaycastHit hit;
             MousePostion = Input.mousePosition;
@@ -64,5 +64,7 @@ public class MouseClick : MonoBehaviour
                 rTSPlayerController.MoveSelectedPlayer(hit.point);
             }
         }
+
+
     }
 }

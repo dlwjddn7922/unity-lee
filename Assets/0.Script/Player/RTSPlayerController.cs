@@ -8,6 +8,7 @@ public class RTSPlayerController : Singleton<RTSPlayerController>
     [SerializeField] private List<PlayerController> selectedPlayerList;
     [SerializeField] public List<PlayerController> playerList = new List<PlayerController>();
     [SerializeField] public List<PlayerController> spawnerList { private set; get; }
+    [SerializeField] private List<SpawnController> selectedEnemyList;
     // Start is called before the first frame update
     void Start()
     {

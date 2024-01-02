@@ -5,9 +5,11 @@ using UnityEngine;
 public class MouseClick : MonoBehaviour
 {
     [SerializeField] private LayerMask layerPlayer;
+    [SerializeField] private LayerMask layerEnemy;
     [SerializeField] private LayerMask layerGround;
     //[SerializeField] private Camera mainCamera;
     [SerializeField] private RTSPlayerController rTSPlayerController;
+    [SerializeField] private RTSEnemyController rTSEnemyController;
 
     float MaxDistance = 15f;
     Vector3 MousePostion, transPosition;
@@ -17,6 +19,7 @@ public class MouseClick : MonoBehaviour
     {
         Camera = GetComponent<Camera>();
         rTSPlayerController = GetComponent<RTSPlayerController>();
+        rTSEnemyController = GetComponent<RTSEnemyController>();
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class MouseClick : MonoBehaviour
                 if (hit.transform.GetComponent<PlayerController>() == null) return;
 
                 if(Input.GetKey(KeyCode.LeftShift))
-                {
+                {                
                     rTSPlayerController.ShiftClickSelectPlayer(hit.transform.GetComponent<PlayerController>());
                 }
                 else
@@ -52,7 +55,7 @@ public class MouseClick : MonoBehaviour
                 }
             }
         }
-        if(Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.M))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.M))
         {
             //RaycastHit hit;
             MousePostion = Input.mousePosition;

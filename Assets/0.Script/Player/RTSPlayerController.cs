@@ -5,10 +5,9 @@ using UnityEngine;
 public class RTSPlayerController : Singleton<RTSPlayerController>
 {
     [SerializeField] private PlayerSpawn playerSpawn;
-    [SerializeField] private List<PlayerController> selectedPlayerList;
+    [SerializeField] public List<PlayerController> selectedPlayerList;
     [SerializeField] public List<PlayerController> playerList = new List<PlayerController>();
     [SerializeField] public List<PlayerController> spawnerList { private set; get; }
-    [SerializeField] private List<SpawnController> selectedEnemyList;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +78,7 @@ public class RTSPlayerController : Singleton<RTSPlayerController>
     /// <summary>
     /// 매개변수로 반아온 newPlayer 선택 설정
     /// </summary>
-    private void SelectPlayer(PlayerController newPlayer)
+    public void SelectPlayer(PlayerController newPlayer)
     {
         //플레이어가 선택되었을 때 호출하는 메소드
         newPlayer.SelectUnit();
@@ -103,7 +102,6 @@ public class RTSPlayerController : Singleton<RTSPlayerController>
         foreach (var item in plist)
         {
             playerList.Add(item);
-        }
-        
+        }   
     }
 }

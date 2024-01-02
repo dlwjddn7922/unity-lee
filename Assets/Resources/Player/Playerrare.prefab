@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6949179700366037798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,6 +173,7 @@ MonoBehaviour:
   bullet: {fileID: -5724826451248661260, guid: 42c375bdfa3ee0043a41b0333f149f67, type: 3}
   speed: 0
   power: 0
+  isMove: 0
 --- !u!114 &1902242334425962264
 MonoBehaviour:
   m_ObjectHideFlags: 0
